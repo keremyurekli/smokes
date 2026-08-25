@@ -29,6 +29,7 @@ public final class Smokes extends JavaPlugin {
     public static NamespacedKey grenadePowerKey;
     public static NamespacedKey dropNothingKey;
     public static NamespacedKey grenadeColorKey;
+    public static NamespacedKey blockDisplaySmoke;
 
 
     public static Plugin PLUGIN;
@@ -50,6 +51,7 @@ public final class Smokes extends JavaPlugin {
         grenadePowerKey = new NamespacedKey(this, "grenade_power");
         dropNothingKey = new NamespacedKey(this, "drop_nothing");
         grenadeColorKey = new NamespacedKey(this, "grenade_color");
+        blockDisplaySmoke = new NamespacedKey(this, "smoke_display");
 
         getServer().getPluginManager().registerEvents(new ItemActionListener(), this);
         getServer().getPluginManager().registerEvents(new EntityEventListener(), this);

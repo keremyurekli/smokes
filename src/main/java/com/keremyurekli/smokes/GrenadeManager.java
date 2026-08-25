@@ -106,7 +106,7 @@ public class GrenadeManager {
                 });
                 //maybe wait for a sec before popping
 
-                SmokeManager.createSmokeAt(smokePos, power, colorMode);
+                SmokeManager.createSmokeAt(smokePos, power, colorMode, slime.getUniqueId());
 
 
 
@@ -118,6 +118,12 @@ public class GrenadeManager {
 
         entityTaskPairs.put(slime.getUniqueId(),tt);
         entityDisplayPairs.put(slime.getUniqueId(),displays);
+
+    }
+
+    public static void getRidOfSlime(UUID id) {
+        entityDisplayPairs.get(id).forEach(Entity::remove);
+        entityDisplayPairs.remove(id);
 
     }
 
