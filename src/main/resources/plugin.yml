@@ -1,0 +1,15 @@
+name: smokes
+description: $description
+version: '${version}'
+
+main: com.keremyurekli.smokes.Smokes
+api-version: '26.2'
+load: POSTWORLD
+
+authors: [ keremyurekli ]
+
+commands:
+  smokes:
+    description: "This is a command"
+    usage: "/smokes <arg>"
+    aliases: [sm, smoke]
