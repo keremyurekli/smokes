@@ -11,3 +11,5 @@ The slime is there because I needed something to handle the physics.<br>
 The smoke itself is also made of many Block Display entities.<br>
 
 AI was used minimally in the project
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/EuCRyqwW6zw/0.jpg)](https://www.youtube.com/watch?v=EuCRyqwW6zw)
