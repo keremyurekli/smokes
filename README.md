@@ -1,7 +1,7 @@
 
 # responsive smokes
 
-A PaperMC plugin that adds reactive voxel smokes to Minecraft, inspired by Counter-Strike 2.<br>
+A PaperMC plugin that adds responsive voxel smokes to Minecraft, inspired by Counter-Strike 2.<br>
 It's written for PaperMC 26.2.<br>
 
 You can get a smoke grenade using `/smokes get 3`.<br>
