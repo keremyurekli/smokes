@@ -1,3 +1,4 @@
+
 # reactive smokes
 
 A PaperMC plugin that adds reactive voxel smokes to Minecraft, inspired by Counter-Strike 2.<br>
@@ -13,3 +14,7 @@ The smoke itself is also made of many Block Display entities.<br>
 AI was used minimally in the project
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/EuCRyqwW6zw/0.jpg)](https://www.youtube.com/watch?v=EuCRyqwW6zw)
+
+
+Showcase — I had to turn the quality down to upload it to GitHub.
+<video src="https://github.com/user-attachments/assets/94dac31e-f618-46b6-a050-ef79f8b272a9" width="320" height="240" controls></video>
