@@ -1,5 +1,5 @@
 
-# reactive smokes
+# responsive smokes
 
 A PaperMC plugin that adds reactive voxel smokes to Minecraft, inspired by Counter-Strike 2.<br>
 It's written for PaperMC 26.2.<br>
