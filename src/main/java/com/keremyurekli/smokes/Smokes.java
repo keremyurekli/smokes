@@ -46,7 +46,7 @@ public final class Smokes extends JavaPlugin {
         PLUGIN = this;
         logger = getLogger();
         //§
-        log(Level.INFO,"Loading smokes plugin!");
+        log(Level.INFO,"Starting registeries!");
 
         grenadePowerKey = new NamespacedKey(this, "grenade_power");
         dropNothingKey = new NamespacedKey(this, "drop_nothing");

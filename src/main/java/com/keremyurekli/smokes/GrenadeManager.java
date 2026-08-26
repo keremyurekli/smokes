@@ -1,5 +1,6 @@
 package com.keremyurekli.smokes;
 
+import net.kyori.adventure.sound.Sound;
 import org.bukkit.*;
 import org.bukkit.block.data.Powerable;
 import org.bukkit.entity.*;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class GrenadeManager {
 
@@ -25,6 +27,22 @@ public class GrenadeManager {
 
     public static void throwGrenade(Player player, float power, boolean rightClick, boolean colorMode) {
         World world = player.getWorld();
+
+        world.playSound(
+                player.getLocation(),
+                "minecraft:item.flintandsteel.use",
+                SoundCategory.BLOCKS,
+                1.0f,
+                0f
+        );
+
+        world.playSound(
+                player.getLocation(),
+                "minecraft:item.armor.equip_leather",
+                SoundCategory.BLOCKS,
+                1.0f,
+                1f
+        );
 
         Slime slime = world.spawn(player.getEyeLocation(), Slime.class, entity -> {
             entity.setSize(0);
@@ -68,7 +86,7 @@ public class GrenadeManager {
 
 
 
-        Vector velocity = player.getLocation().getDirection().multiply(rightClick ? 0.25f : 2f);
+        Vector velocity = player.getLocation().getDirection().multiply(rightClick ? 0.25f : 4f);
 
         velocity.setX(velocity.getX() + player.getVelocity().getX()*2);
 
@@ -105,8 +123,16 @@ public class GrenadeManager {
                     }
                 });
                 //maybe wait for a sec before popping
-
-                SmokeManager.createSmokeAt(smokePos, power, colorMode, slime.getUniqueId());
+                Bukkit.getScheduler().runTaskLater(Smokes.PLUGIN, () -> {
+                    SmokeManager.createSmokeAt(smokePos, power, colorMode, slime.getUniqueId());
+                    world.playSound(
+                            smokePos,
+                            "minecraft:event.mob_effect.bad_omen",
+                            SoundCategory.BLOCKS,
+                            1.0f,
+                            2.0f
+                    );
+                }, ThreadLocalRandom.current().nextInt(20, 30));
 
 
 
@@ -124,7 +150,6 @@ public class GrenadeManager {
     public static void getRidOfSlime(UUID id) {
         entityDisplayPairs.get(id).forEach(Entity::remove);
         entityDisplayPairs.remove(id);
-
     }
 
     private static void grenadeRotationOnAir(List<Display> displays, Entity parent) {

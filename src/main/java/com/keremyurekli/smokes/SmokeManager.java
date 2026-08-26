@@ -93,7 +93,7 @@ public class SmokeManager {
         }.runTaskTimer(Smokes.PLUGIN, 0L, 1L);
     }
 
-    public static void temporarilyDisappear(BlockDisplay item, long duration) {
+    public static void temporarilyDisappear(BlockDisplay item, long duration, long disappear, long reappear) {
         if (!item.isValid() || disappearing.contains(item)) {
             return;
         }
@@ -122,7 +122,7 @@ public class SmokeManager {
                 original.getTranslation().z + scale.z / 2f
         );
 
-        item.setInterpolationDuration(10);
+        item.setInterpolationDuration((int) disappear);
         item.setInterpolationDelay(0);
 
         item.setTransformation(
@@ -155,7 +155,7 @@ public class SmokeManager {
                         return;
                     }
 
-                    item.setInterpolationDuration(10);
+                    item.setInterpolationDuration((int) reappear);
                     item.setInterpolationDelay(0);
                     item.setTransformation(restore);
 
@@ -235,18 +235,17 @@ public class SmokeManager {
     private static void startSmokeLifecycle(List<BlockDisplay> smokeVoxels, UUID uuid) {
         List<BlockDisplay> outerShell = calculateOuterShell(smokeVoxels);
 
-        Set<BlockDisplay> disappearing = new HashSet<>();
 
         startIdleAnimation(outerShell, disappearing);
 
         List<BlockDisplay> firstFades = new ArrayList<>();
 
-        // First half starts disappearing.
+        // First half starts disappearing.f
         Bukkit.getScheduler().runTaskLater(
                 Smokes.PLUGIN,
                 () -> {
                     List<BlockDisplay> fading = getRandomHalf(smokeVoxels);
-//
+
 //                    fading.forEach(entity -> {
 //                        entity.setGlowColorOverride(Color.AQUA);
 //                        entity.setGlowing(true);
@@ -485,7 +484,7 @@ public class SmokeManager {
 
 
 
-    private static final int MAX_SEARCH_STEPS = 32; // cap how far we'll wander to find an open spot
+    private static final int MAX_SEARCH_STEPS = 128; // cap how far we'll wander to find an open spot
 
     private static List<Location> fill(
             List<Location> occupiedVoxels,
@@ -524,7 +523,7 @@ public class SmokeManager {
 
                     if (!occupiedSet.contains(neighbor)
                             && neighbor.getWorld().getBlockAt(neighbor).isPassable()
-                            && isVoxelValid(neighbor, center)) {
+                            && isVoxelValid(neighbor, current)) {
 
                         occupiedSet.add(neighbor);
                         frontier.add(neighbor);

@@ -93,7 +93,9 @@ public class SmokeProjectileDetector {
 
                 SmokeManager.temporarilyDisappear(
                         display,
-                        10L
+                        20L,
+                        5,
+                        30
                 );
             }
         }

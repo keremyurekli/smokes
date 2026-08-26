@@ -45,6 +45,7 @@ public class ItemActionListener implements Listener {
                 // Player left-clicked
                 GrenadeManager.throwGrenade(player, power, false, colorMode);
             }
+            event.getItem().setAmount(item.getAmount() - 1);
 
 
         }
