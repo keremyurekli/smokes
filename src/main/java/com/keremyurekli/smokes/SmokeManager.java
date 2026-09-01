@@ -210,7 +210,7 @@ public class SmokeManager {
                             Material.LIGHT_GRAY_STAINED_GLASS.createBlockData()
                     );
 
-                    entity.setPersistent(false);
+                    entity.setPersistent(true);
                     entity.setRotation(0, 0);
 
                     entity.setTransformation(
